@@ -7,10 +7,7 @@ The Webassembly build of the [`Rnssp`](https://github.com/CDCgov/Rnssp) R packag
 ```r
 webr::install(
     "Rnssp", 
-    repos = c(
-        "https://cdcgov.github.io/Rnssp-wasm"
-        "https://repo.r-wasm.org", 
-    )
+    repos = c("https://cdcgov.github.io/Rnssp-wasm", "https://repo.r-wasm.org")
 )
 ```
 
