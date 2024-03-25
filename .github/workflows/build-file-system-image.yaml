@@ -1,0 +1,48 @@
+# Workflow derived from https://github.com/r-wasm/actions/tree/v1/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  # push:
+  #   branches: master
+  # pull_request:
+  #   branches: master
+  workflow_dispatch:
+
+name: Build Rnssp wasm repository
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: ghcr.io/r-wasm/webr:main
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build wasm packages
+      uses: r-wasm/actions/build-wasm-packages@v0.0.3
+      with:
+        strip: c("demo", "docs", "examples", "help", "html", "include", "tests", "pkgdown", "vignettes")
+  deploy:
+    name: Deploy to GitHub pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download wasm R package repository artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: wasm-repo
+          path: _site
+      - name: Download wasm R library image artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: wasm-image
+          path: _site
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v2
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
