@@ -1,8 +1,8 @@
-# Rnssp_wasm
+# Rnssp-wasm
 This repository builds the [`Rnssp`](https://github.com/CDCgov/Rnssp) R package for Webassembly.
 
 ## Installing Rnssp in your webr REPL
-The Webassembly build of the [`Rnssp`](https://github.com/CDCgov/Rnssp) R package can be installed in a webr REPL by executing the following:
+The Webassembly build of the [`Rnssp`](https://github.com/CDCgov/Rnssp) R package can be installed in a `webr` REPL by executing the following:
 
 ```r
 webr::install(
@@ -11,7 +11,7 @@ webr::install(
 )
 ```
 
-Try it live in a webr REPL <a href="https://webr.r-wasm.org/latest/" target="_blank">here</a>.
+Try it live in a `webr` REPL <a href="https://webr.r-wasm.org/latest/" target="_blank">here</a>.
 
 
 ## Contributing to this project
