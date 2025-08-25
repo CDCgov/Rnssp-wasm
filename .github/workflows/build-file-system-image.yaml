@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build wasm packages
-      uses: r-wasm/actions/build-rwasm@v2
+      uses: r-wasm/actions/build-rwasm@v1
       with:
         strip: c("demo", "docs", "examples", "help", "html", "include", "tests", "pkgdown", "vignettes")
   deploy:
