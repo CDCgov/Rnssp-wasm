@@ -12,11 +12,11 @@ name: Build Rnssp wasm repository
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ghcr.io/r-wasm/webr:main
+    # container: ghcr.io/r-wasm/webr:main
     steps:
     - uses: actions/checkout@v3
     - name: Build wasm packages
-      uses: r-wasm/actions/build-rwasm@v1
+      uses: r-wasm/actions/build-rwasm@v2
       with:
         strip: c("demo", "docs", "examples", "help", "html", "include", "tests", "pkgdown", "vignettes")
   deploy:
