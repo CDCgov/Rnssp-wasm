@@ -15,18 +15,33 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+    build:
     runs-on: ubuntu-latest
-    # container: ghcr.io/r-wasm/webr:main
     steps:
       - uses: actions/checkout@v4
+
       - name: Build wasm packages
         uses: r-wasm/actions/build-rwasm@v3
         with:
           packages: cdcgov/Rnssp
-          strip: "demo, docs, examples, help, html, include, tests, pkgdown, vignettes"
+          strip: "demo,docs,examples,help,html,include,tests,pkgdown,vignettes"
           image-path: _image
           repo-path: _site
+
+      - name: Verify webR repo output
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Tree under _site/bin/emscripten/contrib:"
+          ls -la _site/bin/emscripten/contrib || true
+          find _site/bin/emscripten/contrib -maxdepth 3 -type f -name PACKAGES -print || true
+
+          # Required by your runtime/install path
+          test -f _site/bin/emscripten/contrib/4.6/PACKAGES
+
+          # Ensure Rnssp is actually indexed
+          grep -q '^Package: Rnssp$' _site/bin/emscripten/contrib/4.6/PACKAGES
 
       - name: Upload wasm R package repository artifact
         uses: actions/upload-artifact@v4
