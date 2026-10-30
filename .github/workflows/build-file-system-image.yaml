@@ -23,7 +23,8 @@ jobs:
       - name: Build wasm packages
         uses: r-wasm/actions/build-rwasm@v3
         with:
-          strip: 'c("demo", "docs", "examples", "help", "html", "include", "tests", "pkgdown", "vignettes")'
+          packages: cdcgov/Rnssp
+          strip: "demo, docs, examples, help, html, include, tests, pkgdown, vignettes"
 
   deploy:
     name: Deploy to GitHub Pages
