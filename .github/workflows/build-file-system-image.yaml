@@ -17,7 +17,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ghcr.io/r-wasm/webr:main
+    # container: ghcr.io/r-wasm/webr:main
     steps:
       - uses: actions/checkout@v4
       - name: Build wasm packages
