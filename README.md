@@ -1,4 +1,7 @@
 # Rnssp-wasm
+
+[![Build Rnssp wasm](https://github.com/CDCgov/Rnssp-wasm/actions/workflows/build-file-system-image.yaml/badge.svg)](https://github.com/CDCgov/Rnssp-wasm/actions/workflows/build-file-system-image.yaml)
+
 This repository builds the [`Rnssp`](https://github.com/CDCgov/Rnssp) R package for Webassembly.
 
 ## Installing Rnssp in your webr REPL
