@@ -25,6 +25,20 @@ jobs:
         with:
           packages: cdcgov/Rnssp
           strip: "demo, docs, examples, help, html, include, tests, pkgdown, vignettes"
+          image-path: _image
+          repo-path: _site
+
+      - name: Upload wasm R package repository artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-repo
+          path: _site
+
+      - name: Upload wasm R library image artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: wasm-image
+          path: _image
 
   deploy:
     name: Deploy to GitHub Pages
